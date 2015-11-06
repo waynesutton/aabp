@@ -1,0 +1,64 @@
+
+<!doctype html>
+<html>
+<head>
+
+<script src="http://spreadsheets.google.com/feeds/list/1ldYmZhR5xIa3VtB4HSLELKcRnVWWxN-ufGdUqDE1zpU/1/public/values?alt=json-in-script&amp;callback=importGSS"></script>
+ 
+ <script type="text/javascript">
+function importGSS(json){
+    for(var i = 0; i < json.feed.entry.length; i++){
+        var entry = json.feed.entry[i];
+        $('#departments').append('<option>' + entry.gsx$subdivision.$t + '</option>');
+        $('#subject').append('<option>' + entry.gsx$section.$t + '</option>');
+        $('#services').append('<option>' + entry.gsx$station.$t + '</option>');
+    }
+}
+ </script>
+
+</style>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<style type="text/css">
+  table {border-collapse: collapse; width: 100%;}
+  th, td {border: thin solid black; padding: 3px; text-align: left}
+  tr.head th, tr.head td {background-color: #EDEDED; border-bottom: 4px double black;}
+  h1 {text-align: center;}
+  body {
+    margin: 12px; 
+    font-size: 12px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #444444;
+  font-size: 16px;
+  padding: 20px;
+}
+
+  form {display: none;}
+ 
+  
+}
+.formss {
+  padding: 20px;
+  margin: 20px;
+}
+</style>
+</head>
+
+	<body> 
+
+<div class="importGSS"></div> 
+
+
+
+
+	</body>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var spData = null;
+  function doData(json) {
+      spData = json.feed.entry;
+  }
+  
+  function drawCell(tr, val, isHeader) {
+      var td = $(isHeader ? "<th/>" : "<td/>");
+      tr.append(td);
+      td.append(val);
+      return td;
+  }
+  function drawRow(table, rowData, isHeader) {
+	  if (rowData == null) return null;
+	  if (rowData.length == 0) return null;
+	  var tr = $("<tr/>");
+	  if (isHeader) tr.addClass("head");
+	  table.append(tr);
+	  for(var c=0; c<rowData.length; c++) {
+		  drawCell(tr, rowData[c], ((c == 0) || isHeader));
+	  }
+	  return tr;
+  }
+  
+  function drawTable(parent) {
+	  var table = $("<table/>");
+	  parent.append(table);
+	  return table;
+  }
+  
+  function readData(parent) {
+      var data = spData;
+      var table = drawTable(parent);
+      var rowData = [];
+      var row = 0;
+      
+      for(var r=0; r<data.length; r++) {
+          var cell = data[r]["gs$cell"];
+          var val = cell["$t"];
+          if (cell.col == 1) {
+              drawRow(table, rowData, (row == 1));
+              rowData = [];
+              row++;
+          }
+          rowData.push(val);
+      }
+      drawRow(table, rowData, (row == 1));
+  }
+  $(document).ready(function(){
+      readData($("#data"));
+  });
+  </script>   
+
+
+
+<script src="https://spreadsheets.google.com/feeds/cells/1ldYmZhR5xIa3VtB4HSLELKcRnVWWxN-ufGdUqDE1zpU/1/public/values?alt=json-in-script&callback=doData"></script>
+
+<!-- <script src="https://spreadsheets.google.com/feeds/cells/1hbHqrnYa4oMUquZcq8WkTJk0kI0t9scGBwro-EH-ALA/1/public/values?alt=json-in-script&callback=doData"></script> -->
+
+
+<style type="text/css">
+  table {border-collapse: collapse; width: 100%;}
+  th, td {border: thin solid black; padding: 3px; text-align: left}
+  tr.head th, tr.head td {background-color: #EDEDED; border-bottom: 4px double black;}
+  h1 {text-align: center;}
+  body {
+    margin: 12px; 
+    font-size: 12px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #444444;
+  font-size: 16px;
+  padding: 20px;
+}
+
+  form {display: none;}
+ 
+  
+}
+.formss {
+  padding: 20px;
+  margin: 20px;
+}
+</style>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<div class="formss">
+  </br>
+  <p> working</p>
+  <br>  <br>
+  <a href="sms:/18776052741/&body=Hi, ask me anything. How may I help you?"><button type="button" class="btn btn-success">button 3</button></a>
+
+<hr>
+  <br>  <br>
+  <p>Testing</p>
+
+  <hr>
+
+  <a href="window.open(‘sms:+18776052741?body=Hi, ask anything’, ‘_system’);"><button type="button" class="btn btn-primary">Primary</button></a>
+
+  <a href="sms:&body=hi%20ask%20anything"><button type="button" class="btn btn-success">Primary 2</button></a>
+
+   <a href=”sms:&body=My%20text%20for%20iOS%208″><button type="button" class="btn btn-primary">Primary 2</button></a>
+
+
+<h1>Parse Google Spreadsheet with JavaScript</h1> 
+<div id="data"/>
+
+</div></div>
+</body>
+</html> 

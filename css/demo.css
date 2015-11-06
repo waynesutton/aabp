@@ -1,0 +1,83 @@
+/* Demo CSS */
+
+body {
+	font-family: "Lato", sans-serif;
+	margin: 0;
+	padding: 0;
+	background: #f5f5f5;
+}
+
+.container {
+	max-width: 980px;
+}
+
+.row.rowTop {
+	margin-top: 20px;
+}
+
+.center-txt {
+	text-align: center;
+}
+
+footer {
+	color: #e22b2f;
+}
+
+.message-box {
+	 /*  position: fixed;
+border-radius: 50%;
+background: #77B259;
+color: #fff;
+	  
+  top: 380px;
+  left: 50px;
+  font-size: 62px;
+   padding: 5px;
+  z-index: 80000;
+  height: 90px;
+  width: 90px;
+  text-align: center;
+  
+  */
+ 
+
+}
+
+.message-box-orig {
+	  position: fixed;
+  top: 380px;
+  left: 50px;
+  font-size: 62px;
+  color: #fff;
+  background: #77B259;
+  /* border-radius: 50%; */
+  padding: 5px;
+  z-index: 80000;
+  height: 90px;
+  width: 90px;
+  text-align: center;
+
+}
+
+
+.message-box:hover {
+	/* background: #333; */
+}
+
+.message-box > a,
+.message-box > a:active,
+.message-box > a:focus,
+.message-box > a:hover {
+	color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+	.message-box {
+		  bottom: 25px;
+  right: 25px;
+  font-size: 20px;
+  height: auto;
+  width: 100%;
+  padding: inherit;
+	}
+}

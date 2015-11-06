@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My template</title>
+    <meta name="description" content="My template">
+    
+    <!-- style -->
+    	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/intlTelInput.css">
+
+</head>
+<body class="">
+ 
+   <form class="form-inline" action="SendSMS.php" method="post" style="width: 350px; marging:20px; padding-left: 10px; padding-top:20px;">
+  <!-- <P>  
+     Phone Number (123-345-7890):<br> <INPUT type="text" name="number" style="width: 100%"></P> -->
+    <input type="text" class="form-control bfh-phone" id="phone" type="tel" name="number" > <BUTTON name="submit" class="btn btn-default btn-lg" value="submit" type="submit">Text Me</BUTTON>
+     <!-- value="123-123-1234" 
+     Message: <br><textArea type="text" name="message" style="width: 100%"></TextArea><br><br> -->
+     <!-- <BUTTON name="reset" type="reset">Reset</BUTTON> -->
+     
+
+</FORM>
+
+
+
+
+ <!-- Load jQuery from CDN so can run demo immediately -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/intlTelInput.js"></script>
+    <script>
+      $("#phone").intlTelInput({
+        //allowExtensions: true,
+        autoFormat: true,
+        autoHideDialCode: true,
+        //autoPlaceholder: false,
+        //defaultCountry: "auto",
+        //ipinfoToken: "yolo",
+        //nationalMode: false,
+        numberType: "MOBILE",
+        onlyCountries: ['us'],
+        //preferredCountries: ['cn', 'jp'],
+        utilsScript: "js/utils.js"
+      });
+    </script>
+	
+
+
+</body>
+</html>

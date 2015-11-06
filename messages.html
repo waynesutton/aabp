@@ -1,0 +1,13 @@
+<?php
+// Get the PHP helper library from twilio.com/docs/php/install
+require_once('twilio-php-master/Services/Twilio.php'); // Loads the library
+ 
+// Your Account Sid and Auth Token from twilio.com/user/account
+$sid = "AC1f88d4378f03609d4f8ddeb2255d1102"; 
+$token = "833584594892269c9f3398b8e749882b"; 
+$client = new Services_Twilio($sid, $token);
+ 
+// Loop over the list of records and echo a property for each one
+foreach ($client->account->usage_records as $record) {
+    echo $record->count;
+}

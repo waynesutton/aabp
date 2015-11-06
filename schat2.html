@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+
+		<link href="css/slack-chat.css" rel="stylesheet" />
+		<link href="css/demo.css" rel="stylesheet" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>SlackChat</title>
+		<meta name="description" content="Provide your website visitors with help and support from #Slack">
+	</head>
+	<body>
+		<div class='container'>
+			<div class='page-header'>
+				
+				<h2>SlackChat
+					
+					<br><small>A support chat feature for your website that integrates with #Slack</small>
+				</h2>
+
+				 <button class="btn btn-danger btn-md btn-default btn-try">Try Now</button>&emsp;
+					     
+			</div>
+			
+			
+		</div>
+
+		
+
+
+
+
+		
+
+		<div class="message-box" data-toggle="tooltip" title="Anonymously Ask A Black Person">
+
+			<a href="javascript:void(0);" class="message-box-icon">
+			 Chat Anonymously With A Black Person <BUTTON name="submit" class="btn btn-default askbb" value="submit" type="submit">Open Chat</BUTTON> 
+				
+			</a>
+		</div>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+		<script type="text/javascript" src="js/slack-chat.js"></script>
+		
+		<script>
+			$(document).ready(function () {
+
+				
+				//$('.message-box > a').slackChat('destroy');
+				$('.message-box > a').slackChat();
+				$('.message-box').show();
+
+				$('[data-toggle=tooltip]').tooltip();
+
+				$('.btn-try').on('click', function (e) {
+					e.preventDefault();
+					e.stopPropagation();
+
+					//$('.message-box > a').slackChat('destroy');
+					$('.message-box > a').slackChat();
+					$('.message-box').show();
+
+					slackChatOptions = {
+						apiToken: $('xoxp-5085511200-5085511238-5085643346-344d66').val()
+						,channelId: $('C06MKSA2K').val()
+						,user: $('#user').val()
+						,userImg:  'http://askablackperson.com/img/user-icon-small.png'
+						,sysImg: 'http://askablackperson.com/img/aabp.png'
+						//,userLink: 'http://www.google.com'
+						//,userId: 'anonymous'
+						//,userImg: window.location.href + 'http://askablackperson.com/img/user-icon-small.jpg'
+						//,sysImg: window.location.href + 'http://askablackperson.com/img/aabp.png'
+						,sysUser: $('#sysUser').val()
+						,botUser: $('#botUser').val()
+						,elementToDisable: $('.message-box')
+						,disableIfAway: false
+						,webCache: true
+						,debug:false
+						,privateChannel: false
+					};
+
+					$('.message-box > a').slackChat(slackChatOptions);
+
+					$('.message-box').show();
+
+					return false;
+
+				});
+
+				//load from localStorage
+				for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+
+					if(localStorage.key(i) == 'scParams') {
+						var scParams = JSON.parse(localStorage.getItem( localStorage.key( i ) ));
+
+						if(scParams.apiToken) $('#apiToken').val(scParams.apiToken);
+						if(scParams.channelId) $('#channelId').val(scParams.channelId);
+						if(scParams.user) $('#user').val(scParams.user);
+						if(scParams.sysUser) $('#sysUser').val(scParams.sysUser);
+						if(scParams.botUser) $('#botUser').val(scParams.botUser);
+					}
+				}
+
+				
+				
+			});
+		</script>
+	</body>
+</html>
